@@ -1,0 +1,80 @@
+2022-04-28 21:52:15.278  INFO 24524 --- [main] com.wangning.WnblogApplication           : Starting WnblogApplication using Java 1.8.0_202 on DESKTOP-F9VAQK6 with PID 24524 (F:\BlogProject\wnblog\target\classes started by wangning in F:\BlogProject\wnblog)
+2022-04-28 21:52:15.281  INFO 24524 --- [main] com.wangning.WnblogApplication           : No active profile set, falling back to default profiles: default
+2022-04-28 21:52:16.070  INFO 24524 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-04-28 21:52:16.077  INFO 24524 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-28 21:52:16.077  INFO 24524 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2022-04-28 21:52:16.155  INFO 24524 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-28 21:52:16.155  INFO 24524 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 836 ms
+2022-04-28 21:52:17.312  INFO 24524 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-04-28 21:52:17.606  WARN 24524 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+2022-04-28 21:52:17.607  INFO 24524 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-04-28 21:52:17.610  INFO 24524 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-04-28 21:52:17.619  INFO 24524 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-04-28 21:52:17.629 ERROR 24524 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2022-04-28 21:52:37.866  INFO 14192 --- [main] com.wangning.WnblogApplication           : Starting WnblogApplication using Java 1.8.0_202 on DESKTOP-F9VAQK6 with PID 14192 (F:\BlogProject\wnblog\target\classes started by wangning in F:\BlogProject\wnblog)
+2022-04-28 21:52:37.869  INFO 14192 --- [main] com.wangning.WnblogApplication           : No active profile set, falling back to default profiles: default
+2022-04-28 21:52:38.638  INFO 14192 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-04-28 21:52:38.644  INFO 14192 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-28 21:52:38.645  INFO 14192 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2022-04-28 21:52:38.717  INFO 14192 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-28 21:52:38.717  INFO 14192 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 811 ms
+2022-04-28 21:52:39.792  INFO 14192 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-04-28 21:52:40.077  INFO 14192 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-04-28 21:52:40.087  INFO 14192 --- [main] com.wangning.WnblogApplication           : Started WnblogApplication in 2.604 seconds (JVM running for 3.522)
+2022-04-28 21:52:59.132  INFO 14192 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-28 21:52:59.132  INFO 14192 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-28 21:52:59.133  INFO 14192 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-04-28 21:52:59.169  INFO 14192 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-04-28 21:52:59.317  INFO 14192 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-04-28 21:53:47.994  INFO 14192 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-04-28 21:53:47.994  INFO 14192 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-04-28 21:53:48.001  INFO 14192 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-04-28 21:53:52.591  INFO 23620 --- [main] com.wangning.WnblogApplication           : Starting WnblogApplication using Java 1.8.0_202 on DESKTOP-F9VAQK6 with PID 23620 (F:\BlogProject\wnblog\target\classes started by wangning in F:\BlogProject\wnblog)
+2022-04-28 21:53:52.593  INFO 23620 --- [main] com.wangning.WnblogApplication           : No active profile set, falling back to default profiles: default
+2022-04-28 21:53:53.365  INFO 23620 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-04-28 21:53:53.371  INFO 23620 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-28 21:53:53.371  INFO 23620 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2022-04-28 21:53:53.441  INFO 23620 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-28 21:53:53.441  INFO 23620 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 812 ms
+2022-04-28 21:53:54.534  INFO 23620 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-04-28 21:53:54.848  INFO 23620 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-04-28 21:53:54.856  INFO 23620 --- [main] com.wangning.WnblogApplication           : Started WnblogApplication in 2.595 seconds (JVM running for 3.527)
+2022-04-28 21:53:55.048  INFO 23620 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-28 21:53:55.048  INFO 23620 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-28 21:53:55.049  INFO 23620 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-04-28 21:53:55.081  INFO 23620 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-04-28 21:53:55.208  INFO 23620 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-04-28 21:56:22.446  INFO 23620 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2022-04-28 21:56:22.447  INFO 23620 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-04-28 21:56:22.451  INFO 23620 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-04-28 21:56:26.988  INFO 8728 --- [main] com.wangning.WnblogApplication           : Starting WnblogApplication using Java 1.8.0_202 on DESKTOP-F9VAQK6 with PID 8728 (F:\BlogProject\wnblog\target\classes started by wangning in F:\BlogProject\wnblog)
+2022-04-28 21:56:26.991  INFO 8728 --- [main] com.wangning.WnblogApplication           : No active profile set, falling back to default profiles: default
+2022-04-28 21:56:27.777  INFO 8728 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-04-28 21:56:27.784  INFO 8728 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-04-28 21:56:27.785  INFO 8728 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.41]
+2022-04-28 21:56:27.858  INFO 8728 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-04-28 21:56:27.858  INFO 8728 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 826 ms
+2022-04-28 21:56:28.960  INFO 8728 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2022-04-28 21:56:29.260  INFO 8728 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-04-28 21:56:29.268  INFO 8728 --- [main] com.wangning.WnblogApplication           : Started WnblogApplication in 2.635 seconds (JVM running for 3.571)
+2022-04-28 21:56:29.376  INFO 8728 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-04-28 21:56:29.376  INFO 8728 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-04-28 21:56:29.377  INFO 8728 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-04-28 21:56:29.410  INFO 8728 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-04-28 21:56:29.551  INFO 8728 --- [http-nio-8081-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-04-28 21:56:29.582 ERROR 8728 --- [http-nio-8081-exec-1] c.w.h.exception.GlobalExceptionHandler   : 发生业务异常！原因是：数据未找到
