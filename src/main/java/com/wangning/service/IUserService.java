@@ -17,4 +17,13 @@ public interface IUserService extends IService<User> {
     User getUserAndRolesByName(String name);
 
     User getUserByName(String name);
+
+    /**
+     * 登录判断
+     * @param username
+     * @return
+     */
+    User login(String username);
+
+
 }

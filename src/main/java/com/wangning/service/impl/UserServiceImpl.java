@@ -48,4 +48,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     public User getUserByName(String name) {
         return userMapper.getUserByName(name);
     }
+
+    /**
+     * 登录判断
+     * @param username
+     * @return
+     */
+    @Override
+    public User login(String username) {
+        return userMapper.getUserByName(username);
+    }
 }

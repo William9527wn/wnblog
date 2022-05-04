@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -20,6 +21,7 @@ import lombok.EqualsAndHashCode;
  * @author wangning
  * @since 2022-04-28
  */
+@ApiModel(value="User")
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("tb_user")
