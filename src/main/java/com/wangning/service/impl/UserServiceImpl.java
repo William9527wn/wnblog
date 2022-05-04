@@ -9,6 +9,7 @@ import com.wangning.handler.exception.CustomException;
 import com.wangning.mapper.UserMapper;
 import com.wangning.service.IUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Service;
  * @since 2022-04-28
  */
 @Service
+@Slf4j
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
     @Autowired
@@ -33,5 +35,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             return user;
         }
         throw  new CustomException(ResultCode.RESULE_DATA_NONE.code(),ResultCode.RESULE_DATA_NONE.message());
+    }
+
+    @Override
+    public User getUserAndRolesByName(String name) {
+        log.info(name);
+        User user = userMapper.getUserRolesByName(name);
+        return user;
+    }
+
+    @Override
+    public User getUserByName(String name) {
+        return userMapper.getUserByName(name);
     }
 }

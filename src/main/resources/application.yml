@@ -6,7 +6,7 @@ spring:
     url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
 
 server:
-  port: 8081
+  port: 8088
 #  level:
 #    root: error
 #    org.springframework: debug

@@ -37,7 +37,43 @@ public class UserController {
     @ResponseBody
     @ApiOperation("根据id查询用户")
     public Result selectUserById(){
-        User user = userService.selectUserById(4);
+        User user = userService.selectUserById(1);
+        log.info("测试");
+        if(ObjectUtil.isNotEmpty(user)){
+            return Result.success(user);
+        }
+        return Result.failure(ResultCode.RESULE_DATA_NONE);
+    }
+
+    @RequestMapping("/roles")
+    @ResponseBody
+    @ApiOperation("根据id查询用户")
+    public Result getUserAndRolesByUsername(){
+        User user = userService.getUserAndRolesByName("admin");
+        log.info("测试");
+        if(ObjectUtil.isNotEmpty(user)){
+            return Result.success(user);
+        }
+        return Result.failure(ResultCode.RESULE_DATA_NONE);
+    }
+
+    @RequestMapping("/fd")
+    @ResponseBody
+    @ApiOperation("根据id查询用户")
+    public Result getUserByUsername(){
+        User user = userService.getUserAndRolesByName("admin");
+        log.info("测试");
+        if(ObjectUtil.isNotEmpty(user)){
+            return Result.success(user);
+        }
+        return Result.failure(ResultCode.RESULE_DATA_NONE);
+    }
+
+    @RequestMapping("/name")
+    @ResponseBody
+    @ApiOperation("根据id查询用户")
+    public Result getUserByName(){
+        User user = userService.getUserByName("admin");
         log.info("测试");
         if(ObjectUtil.isNotEmpty(user)){
             return Result.success(user);
