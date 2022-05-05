@@ -10,9 +10,14 @@ import com.wangning.service.impl.UserServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,7 +31,6 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Api(tags = "用户管理")
-@RequestMapping("/user")
 @Slf4j
 public class UserController {
 
@@ -79,5 +83,29 @@ public class UserController {
             return Result.success(user);
         }
         return Result.failure(ResultCode.RESULE_DATA_NONE);
+    }
+
+    @RequestMapping("/login")
+    @ResponseBody
+    public String login(@RequestParam(value = "username", required = true) String username,
+                        @RequestParam(value = "password", required = true) String password){
+        log.info("----------入口----------------");
+        Subject subject= SecurityUtils.getSubject();
+
+        UsernamePasswordToken token=new UsernamePasswordToken(username, password);
+
+        try {
+            subject.login(token);
+            log.error("----login入口---");
+            if (subject.isAuthenticated()) {
+                System.out.println("成功");
+                return "success";
+            }
+        } catch (AuthenticationException e) {
+            e.printStackTrace();
+            System.out.println(e);
+        }
+        return "error";
+
     }
 }

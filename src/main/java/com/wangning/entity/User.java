@@ -85,6 +85,12 @@ public class User implements Serializable {
      */
     private Boolean isSilence;
 
+    /**
+     * 盐
+     */
+    private String salt;
+
+
     @TableField(exist = false)
     private List<Role> roles;
 
