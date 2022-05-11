@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Api(tags = "用户管理")
 @Slf4j
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -87,7 +88,7 @@ public class UserController {
 
     @RequestMapping("/login")
     @ResponseBody
-    public String login(@RequestParam(value = "username", required = true) String username,
+    public Result login(@RequestParam(value = "username", required = true) String username,
                         @RequestParam(value = "password", required = true) String password){
         log.info("----------入口----------------");
         Subject subject= SecurityUtils.getSubject();
@@ -99,13 +100,12 @@ public class UserController {
             log.error("----login入口---");
             if (subject.isAuthenticated()) {
                 System.out.println("成功");
-                return "success";
+                return Result.success();
             }
         } catch (AuthenticationException e) {
             e.printStackTrace();
             System.out.println(e);
         }
-        return "error";
-
+        return Result.failure();
     }
 }

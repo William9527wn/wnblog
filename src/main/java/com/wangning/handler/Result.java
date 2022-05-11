@@ -50,6 +50,11 @@ public class Result implements Serializable {
         result.setResultCode(resultCode);
         return result;
     }
+    public static Result failure() {
+        Result result = new Result();
+        result.setResultCode(ResultCode.USER_LOGIN_ERROR);
+        return result;
+    }
 
     public static Result failure(ResultCode resultCode, Object data) {
         Result result = new Result();
