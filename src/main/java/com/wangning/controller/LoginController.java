@@ -32,7 +32,7 @@ public class LoginController {
     @ApiOperation(value = "登录之后返回token")
     @PostMapping("/login")
     public Result login(@RequestBody UserLoginVo userLoginVo, HttpServletRequest request){
-        return userService.login(userLoginVo.getUsername(),userLoginVo.getPassword(),request);
+        return userService.login(userLoginVo.getUsername(),userLoginVo.getPassword(),userLoginVo.getCode(),request);
     }
 
     @ApiOperation(value = "获取当前登录用户的信息")

@@ -2,7 +2,9 @@ package com.wangning.service.impl;
 
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.json.JSONUtil;
 import com.wangning.config.security.JwtTokenUtil;
+import com.wangning.entity.Role;
 import com.wangning.entity.User;
 import com.wangning.enums.ResultCode;
 import com.wangning.handler.Result;
@@ -24,6 +26,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -70,9 +73,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     @Override
-    public Result login(String username, String password, HttpServletRequest request) {
+    public List<Role> getUserRolesByUserName(String name) {
+        return userMapper.getUserRolesByUserName(name);
+    }
+
+    @Override
+    public Result login(String username, String password, String code, HttpServletRequest request) {
+        String captcha = (String) request.getSession().getAttribute("captcha");
+        log.info(captcha+"***********"+ code);
+        if(StrUtil.isEmpty(captcha) || !captcha.equalsIgnoreCase(code)){
+            return Result.failure(ResultCode.USER_LOGIN_CAPTCHA_ERROR);
+        }
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-        if (null==userDetails||!passwordEncoder.matches(password,userDetails.getPassword())){
+        log.info(JSONUtil.toJsonStr(userDetails.getPassword()+ "--------------"+ password));
+        if (null==userDetails||!passwordEncoder.matches(password,passwordEncoder.encode(userDetails.getPassword()))){
             return Result.failure(ResultCode.USER_LOGIN_ERROR);
         }
         if (!userDetails.isEnabled()){

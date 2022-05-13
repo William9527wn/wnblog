@@ -2,10 +2,13 @@ package com.wangning.mapper;
 
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.wangning.dto.UserRoleDto;
+import com.wangning.entity.Role;
 import com.wangning.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * <p>
@@ -20,4 +23,6 @@ public interface UserMapper extends BaseMapper<User> {
 
     User getUserRolesByName(@Param("username") String username);
     User getUserByName(@Param("username") String username);
+
+    List<Role> getUserRolesByUserName(@Param("username") String username);
 }

@@ -1,6 +1,9 @@
 package com.wangning.config.security;
 
 
+import com.wangning.config.JwtAuthencationTokenFilter;
+import com.wangning.config.RestAuthorizationEntryPoint;
+import com.wangning.config.RestfulAccessDeniedHandler;
 import com.wangning.entity.User;
 import com.wangning.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +33,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private IUserService userService;
+    @Autowired
+    private RestAuthorizationEntryPoint restAuthorizationEntryPoint;
+    @Autowired
+    private RestfulAccessDeniedHandler restfulAccessDeniedHandler;
 
-    @Autowired
-    private CustomFilter customFilter;
-    @Autowired
-    private CustomUrlDecisionManager customUrlDecisionManager;
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -59,7 +63,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         );
     }
 
-
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        //使用JWT，不需要csrf
+        http.csrf()
+                .disable()
+                //基于token，不需要session
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .authorizeRequests()
+                //所有请求都要求认证
+                .anyRequest()
+                .authenticated()
+                .and()
+                //禁用缓存
+                .headers()
+                .cacheControl();
+        //添加jwt 登录授权过滤器
+        http.addFilterBefore(jwtAuthencationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+        //添加自定义未授权和未登录结果返回
+        http.exceptionHandling()
+                .accessDeniedHandler(restfulAccessDeniedHandler)
+                .authenticationEntryPoint(restAuthorizationEntryPoint);
+    }
 
     @Override
     @Bean
@@ -67,8 +94,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return username -> {
             User user = userService.getUserByName(username);
             if (null!=user){
-                user.setRoles(adminService.getRoles(admin.getId()));
-                return admin;
+                user.setRoles(userService.getUserRolesByUserName(username));
+//                user.setPassword(passwordEncoder().encode(user.getPassword()));
+                return user;
             }
             throw new UsernameNotFoundException("用户名或密码不正确");
         };
@@ -84,5 +112,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public JwtAuthencationTokenFilter jwtAuthencationTokenFilter(){
         return new JwtAuthencationTokenFilter();
     }
-
 }
