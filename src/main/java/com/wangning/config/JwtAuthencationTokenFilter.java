@@ -11,6 +11,7 @@ jwt登录过滤器
  */
 
 import com.wangning.config.security.JwtTokenUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -26,7 +27,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
+@Slf4j
 public class JwtAuthencationTokenFilter extends OncePerRequestFilter {
 
     @Value("${jwt.tokenHeader}")
@@ -45,6 +46,8 @@ public class JwtAuthencationTokenFilter extends OncePerRequestFilter {
         if (null!=authHeader && authHeader.startsWith(tokenHead)){
             String authToken = authHeader.substring(tokenHead.length());
             String username = jwtTokenUtil.getUserNameFromToken(authToken);
+            log.error(authToken);
+            log.error(username);
             //token存在用户名但未登录
             if (null!=username && null == SecurityContextHolder.getContext().getAuthentication()){
                 //登录
