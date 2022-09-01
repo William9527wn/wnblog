@@ -26,32 +26,4 @@ import java.security.Principal;
 @Api(value = "登录功能")
 public class LoginController {
 
-    @Autowired
-    private IUserService userService;
-
-    @ApiOperation(value = "登录之后返回token")
-    @PostMapping("/login")
-    public Result login(@RequestBody UserLoginVo userLoginVo, HttpServletRequest request){
-        return userService.login(userLoginVo.getUsername(),userLoginVo.getPassword(),userLoginVo.getCode(),request);
-    }
-
-    @ApiOperation(value = "获取当前登录用户的信息")
-    @GetMapping("/admin/info")
-    public Result getAdminInfo(Principal principal){
-        if (null==principal){
-            return null;
-        }
-        String username = principal.getName();
-        User user = userService.getUserByName(username);
-        user.setPassword(null);
-        User userRoles = userService.getUserAndRolesByName(username);
-        user.setRoles(userRoles.getRoles());
-        return Result.success(user);
-    }
-
-    @ApiOperation(value = "退出登录")
-    @PostMapping("/logout")
-    public Result logout(){
-        return Result.success(ResultCode.USER_HAS_LOGOUT);
-    }
 }

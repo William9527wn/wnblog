@@ -9,12 +9,15 @@ package com.wangning.handler;
 import java.io.Serializable;
 
 import com.wangning.enums.ResultCode;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * Created by zhumaer on 17/5/24.
  */
 @Data
+@AllArgsConstructor
 public class Result implements Serializable {
 
     private static final long serialVersionUID = -3948389268046368059L;
@@ -30,6 +33,12 @@ public class Result implements Serializable {
     public Result(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
+    }
+
+    public Result(ResultCode resultCode, Object data){
+        this.code = resultCode.code();
+        this.msg = resultCode.message();
+        this.data = data;
     }
 
     public static Result success() {

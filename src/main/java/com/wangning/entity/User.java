@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import lombok.NoArgsConstructor;
 
 /**
  * <p>
@@ -24,9 +24,11 @@ import org.springframework.security.core.userdetails.UserDetails;
  * @since 2022-04-28
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@TableName("tb_user")
-public class User implements Serializable, UserDetails {
+@TableName("user")
+public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -90,29 +92,5 @@ public class User implements Serializable, UserDetails {
     private List<Role> roles;
 
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
 
 }
